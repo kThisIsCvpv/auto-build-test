@@ -13,8 +13,6 @@ before_deploy:
   - git config --global user.name "Travis CI"
   - export GIT_TAG=v2.0.0-b$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-#  - git push origin --tags
-  - mvn package
 
 deploy:
   provider: releases
