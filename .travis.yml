@@ -14,11 +14,12 @@ before_deploy:
   - export GIT_TAG=v2.0.0-b$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - mvn package
+  - mv "target/testbench-0.0.1-SNAPSHOT.jar" "target/testbench.jar"
 
 deploy:
   provider: releases
   api_key: "$GH_TOKEN"
-  file: "target/testbench-0.0.1-SNAPSHOT.jar"
+  file: "target/testbench.jar"
   skip_cleanup: true
   on:
     tags: false
